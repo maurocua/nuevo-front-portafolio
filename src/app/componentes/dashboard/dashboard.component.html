@@ -1,0 +1,23 @@
+<p style="color:red" *ngIf="!logueado">No logueado</p>
+<p style="color:limegreen" *ngIf="logueado">Usuario logueado</p>
+<app-encabezado></app-encabezado>
+<hr>
+<div id="resume">
+    <app-acerca-de></app-acerca-de>
+    <hr>
+    <section>
+        <article>
+            <app-educacion></app-educacion>
+        </article>
+        <hr>
+        <article>
+            <app-habilidades></app-habilidades>
+        </article>
+    </section>
+    <hr>
+    <section>
+        <article>
+            <app-proyectos></app-proyectos>
+        </article>
+    </section>
+</div>

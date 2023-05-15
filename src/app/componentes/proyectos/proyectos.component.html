@@ -1,0 +1,34 @@
+<h2>Proyectos</h2>
+<div *ngIf="logueado">
+    <button (click)="mostrarFormPro=true" class="btn btn-warning">➕Nuevo Proyecto</button>
+    <form *ngIf="mostrarFormPro" class="form-group">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
+            <input type="text" class="form-control" placeholder="Link" [(ngModel)]="newLink">
+        </div>
+        <button (click)=agregarProyecto(newNombre,newLink)
+            class="btn btn-primary">Agregar</button>
+    </form>
+</div>
+<div *ngFor="let proy of lista_proyectos">
+    <p *ngIf="!logueado"><a href={{proy.link_proyecto}}>{{proy.proyecto}}</a></p>
+    <p *ngIf="logueado">Proyecto:</p>
+    <form class="form-group" *ngIf="logueado">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder={{proy.proyecto}} name="nuevoNombre"
+                value={{proy.proyecto}}>
+        </div>
+        <button (click)=cambiarProyecto(proy.id_proyecto,proy.proyecto,proy.link_proyecto) class="btn btn-success">Editar</button>
+    </form>
+    <p *ngIf="logueado">Link:</p>
+    <form class="form-group" *ngIf="logueado">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder={{proy.link_proyecto}} name="nuevoLink"
+                value="{{proy.link_proyecto}}">
+        </div>
+        <button (click)=cambiarProyecto(proy.id_proyecto,proy.proyecto,proy.link_proyecto) class="btn btn-success">Editar</button>
+    </form>
+    <button *ngIf="logueado" (click)=eliminarProyecto(proy.id_proyecto) 
+                    class="btn btn-danger">Eliminar proyecto</button>
+    <hr *ngIf="logueado">
+</div>

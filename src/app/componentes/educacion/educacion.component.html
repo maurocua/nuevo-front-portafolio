@@ -1,0 +1,36 @@
+<h2>Educación</h2>
+<div *ngIf="logueado">
+    <button (click)="mostrarFormEst=true" class="btn btn-warning">➕Nuevo estudio</button>
+    <form *ngIf="mostrarFormEst" class="form-group">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
+            <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel">
+        </div>
+        <button (click)=agregarEstudio(newNombre,newNivel)
+            class="btn btn-primary">Agregar</button>
+    </form>
+</div>
+<ul>
+    <div *ngFor="let estudio of lista_estudios">
+        <li *ngIf="!logueado">{{estudio.nombre_estudio}} {{estudio.nivel}}</li>
+        <p *ngIf="logueado">Estudio:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder={{estudio.nombre_estudio}} name="nuevoNombre"
+                    value={{estudio.nombre_estudio}}>
+            </div>
+            <button (click)=cambiarEstudio(estudio.id_estudio,estudio.nombre_estudio,estudio.nivel) class="btn btn-success">Editar</button>
+        </form>
+        <p *ngIf="logueado">Nivel:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder={{estudio.nivel}} name="nuevoNivel"
+                    value="{{estudio.nivel}}">
+            </div>
+            <button (click)=cambiarEstudio(estudio.id_estudio,estudio.nombre_estudio,estudio.nivel) class="btn btn-success">Editar</button>
+        </form>
+        <button *ngIf="logueado" (click)=eliminarEstudio(estudio.id_estudio)
+             class="btn btn-danger">Eliminar estudio</button>
+        <hr *ngIf="logueado">
+    </div>
+</ul>

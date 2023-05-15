@@ -1,0 +1,60 @@
+
+body {
+    background-color: #ECE9E1;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    color: #3D3D3D;
+  }
+  
+  #picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 12%;
+    height: auto;
+  }
+  
+  #name {
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  #resume {
+    background-color: white;
+    color: black;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 2%;
+    margin-bottom: 5%;
+  
+  }
+  
+  p {
+    margin-left: 2%;
+  }
+  
+  a:link {
+    color: green;
+  }
+  
+  a:visited {
+    color: green;
+  }
+  
+  a:hover {
+    color: rgb(0, 197, 0);
+  }
+  
+  a:active {
+    color: rgb(101, 248, 101);
+  }
+  
+  .ng-valid:not(form).ng-touched {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #a94442; /* red */
+  }

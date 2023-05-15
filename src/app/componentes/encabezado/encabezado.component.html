@@ -1,0 +1,134 @@
+<div class="text-center">
+    <!-- foto perfil -->
+    <div class=".col-sm-12"></div><img src={{ruta_foto}} class="img-thumbnail" alt="Mauro Cuassolo perfil" width="100"
+        id="picture">
+        <p *ngIf="logueado" align="left">Ruta foto de perfil:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="ruta_foto" placeholder={{ruta_foto}}
+                    name="ruta_foto">
+            </div>
+            <button (click)=cambiarRutaFoto(ruta_foto) class="btn btn-success">Editar</button>
+        </form>
+        <!-- <form class="form-group" *ngIf="mostrarCampoPassFoto">
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password"
+                    placeholder="contraseña" name="password">
+            </div>
+            <button (click)=cambiarRutaFoto(ruta_foto) class="btn btn-danger">Ingresar</button>
+        </form> -->
+</div>
+<section>
+    <article>
+        <!-- nombre -->
+        <h2 id="name" *ngIf="!logueado">{{nombre}}</h2>
+        <p *ngIf="logueado">Nombre:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="nombre" placeholder={{nombre}}
+                    name="nombre">
+            </div>
+            <button (click)=cambiarNombre(nombre) class="btn btn-success">Editar</button>
+        </form>
+        <!-- <form class="form-group" *ngIf="mostrarCampoPassNombre">
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password"
+                    placeholder="contraseña" name="password">
+            </div>
+            <button (click)=cambiarNombre(nombre) class="btn btn-danger">Ingresar</button>
+        </form> -->
+
+        <!-- descripción -->
+        <h4 *ngIf="!logueado">{{descripcion}}</h4>
+        <p *ngIf="logueado">Descripción:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="descripcion" placeholder={{descripcion}}
+                    name="descripcion">
+            </div>
+            <button (click)=cambiarDescripcion(descripcion) class="btn btn-success">Editar</button>
+        </form>
+        <!-- <form class="form-group" *ngIf="mostrarCampoPassDescripcion">
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password"
+                    placeholder="contraseña" name="password">
+            </div>
+            <button (click)=cambiarDescripcion(descripcion) class="btn btn-danger">Ingresar</button>
+        </form> -->
+
+        <!-- edad -->
+        <p *ngIf="!logueado">{{edad}} años. {{ubicacion}}</p>
+        <p *ngIf="logueado">Edad:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="edad" placeholder={{edad}}
+                    name="edad">
+            </div>
+            <button (click)=cambiarEdad(edad) class="btn btn-success">Editar</button>
+        </form>
+        <!-- <form class="form-group" *ngIf="mostrarCampoPassEdad">
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password"
+                    placeholder="contraseña" name="password">
+            </div>
+            <button (click)=cambiarEdad(edad) class="btn btn-danger">Ingresar</button>
+        </form> -->
+
+        <!-- ubicacion -->
+        <p *ngIf="logueado">Ubicación:</p>
+        <form class="form-group" *ngIf="logueado">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="ubicacion" placeholder={{ubicacion}}
+                    name="ubicacion">
+            </div>
+            <button (click)=cambiarUbicacion(ubicacion) class="btn btn-success">Editar</button>
+        </form>
+        <!-- <form class="form-group" *ngIf="mostrarCampoPassUbicacion">
+            <div class="form-group">
+                <input type="password" class="form-control" id="password" [(ngModel)]="password"
+                    placeholder="contraseña" name="password">
+            </div>
+            <button (click)=cambiarUbicacion(ubicacion) class="btn btn-danger">Ingresar</button>
+        </form> -->
+        <!-- contacto -->
+        <div>
+        <p>Contacto:</p>
+        <div *ngIf="logueado">
+            <button (click)="mostrarFormRed=true" class="btn btn-warning">➕Nueva red</button>
+            <form *ngIf="mostrarFormRed" class="form-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre" name="newNombre">
+                    <input type="text" class="form-control" placeholder="Link" [(ngModel)]="newLink" name="newLink">
+                </div>
+                <button (click)=agregarRed(newNombre,newLink)
+                    class="btn btn-primary">Agregar</button>
+            </form>
+        </div>
+        <div *ngFor="let red of lista_redes">
+            <a href={{red.link_contacto}} target="_blank" *ngIf="!logueado">{{red.red_social}}</a>
+            <p *ngIf="logueado">Red social:</p>
+            <form class="form-group" *ngIf="logueado">
+                <div class="form-group">
+                    <input type="text" class="form-control"  placeholder={{red.red_social}} 
+                    name="nuevoNombre" [(ngModel)]="red.red_social" value="{{red.red_social}}">
+                </div>
+                <button (click)=cambiarRed(red.id_contacto,red.red_social,red.link_contacto) class="btn btn-success">Editar</button>
+            </form>
+            <p *ngIf="logueado">Link:</p>
+            <form class="form-group" *ngIf="logueado">
+                <div class="form-group">
+                    <input type="text" class="form-control"  placeholder={{red.link_contacto}}
+                    name="nuevoLink" value="{{red.link_contacto}}" [(ngModel)]="red.link_contacto">
+                </div>
+                <button (click)=cambiarRed(red.id_contacto,red.red_social,red.link_contacto) class="btn btn-success">Editar</button>
+            </form>
+
+            <button *ngIf="logueado" (click)=eliminarRed(red.id_contacto)
+             class="btn btn-danger">Eliminar red</button>
+
+            <hr *ngIf="logueado">
+        </div>
+        
+    </div>
+    </article>
+</section>

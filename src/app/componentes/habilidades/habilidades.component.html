@@ -1,0 +1,81 @@
+<h2>Habilidades</h2>
+<ul>
+    <li>
+        <p>Experiencia con:</p>
+        <div *ngIf="logueado">
+            <button (click)="mostrarFormIdioma=true" class="btn btn-warning">➕Nueva habilidad</button>
+            <form *ngIf="mostrarFormIdioma" class="form-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombreH">
+                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivelH">
+                </div>
+                <button (click)=agregarHabilidad(newNombreH,newNivelH)
+                    class="btn btn-primary">Agregar</button>
+            </form>
+        </div>
+        <ul>
+            <div *ngFor="let hab of lista_habilidades">
+                <li *ngIf="!logueado">{{hab.habilidad}} {{hab.nivel_hab}}</li>
+                <p *ngIf="logueado">Habilidad:</p>
+                <form class="form-group" *ngIf="logueado">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder={{hab.habilidad}} name="nuevaHab"
+                            value={{hab.habilidad}}>
+                    </div>
+                    <button (click)=cambiarHabilidad(hab.id_habilidad,hab.habilidad,hab.nivel_hab)
+                        class="btn btn-success">Editar</button>
+                </form>
+                <p *ngIf="logueado">Nivel:</p>
+                <form class="form-group" *ngIf="logueado">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder={{hab.nivel_hab}} name="nuevoNivel"
+                            value="{{hab.nivel_hab}}">
+                    </div>
+                    <button (click)=cambiarHabilidad(hab.id_habilidad,hab.habilidad,hab.nivel_hab)
+                        class="btn btn-success">Editar</button>
+                </form>
+                <button *ngIf="logueado" (click)=eliminarHabilidad(hab.id_habilidad) 
+                    class="btn btn-danger">Eliminar habilidad</button>
+                <hr *ngIf="logueado">
+            </div>
+        </ul>
+    </li>
+    <li>
+        Idiomas:
+        <div *ngIf="logueado">
+            <button (click)="mostrarFormHab=true" class="btn btn-warning">➕Nuevo idioma</button>
+            <form *ngIf="mostrarFormHab" class="form-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
+                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel">
+                </div>
+                <button (click)=agregarIdioma(newNombre,newNivel)
+                    class="btn btn-primary">Agregar</button>
+            </form>
+        </div>
+        <ul *ngFor="let idio of lista_idiomas">
+            <li *ngIf="!logueado">{{idio.idioma}} {{idio.nivel_idioma}}</li>
+            <p *ngIf="logueado">Idioma:</p>
+            <form class="form-group" *ngIf="logueado">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder={{idio.idioma}} name="nuevoNombre"
+                        value={{idio.idioma}}>
+                </div>
+                <button (click)=cambiarIdioma(idio.id_idioma,idio.idioma,idio.nivel_idioma)
+                    class="btn btn-success">Editar</button>
+            </form>
+            <p *ngIf="logueado">Nivel:</p>
+            <form class="form-group" *ngIf="logueado">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder={{idio.nivel_idioma}} name="nuevoNivel"
+                        value="{{idio.nivel_idioma}}">
+                </div>
+                <button (click)=cambiarIdioma(idio.id_idioma,idio.idioma,idio.nivel_idioma)
+                    class="btn btn-success">Editar</button>
+            </form>
+            <button *ngIf="logueado" (click)=eliminarIdioma(idio.id_idioma)
+             class="btn btn-danger">Eliminar idioma</button>
+            <hr *ngIf="logueado">
+        </ul>
+    </li>
+</ul>
