@@ -84,33 +84,60 @@ export class EncabezadoComponent implements OnInit {
     this.principal.nombre_completo = nombre;
     this.http.put(this.url + 'editar', this.principal).subscribe(
       (response) => {
-        console.log('PUT request successful', response);
-        this.router.navigate(['/login']);
+        console.log('Solicitud PUT exitosa', response);
       },
       (error) => {
-        console.log('Error during PUT request', error);
+        console.log('Error durante la solicitud PUT', error);
       }
     );
   }
 
   cambiarDescripcion(descripcion: string) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.principal.descripcion = descripcion;
+    this.http.put(this.url + 'editar', this.principal).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   cambiarEdad(edad: number) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.principal.edad = edad;
+    this.http.put(this.url + 'editar', this.principal).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   cambiarUbicacion(ubicacion: string) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.principal.ubicacion= ubicacion;
+    this.http.put(this.url + 'editar', this.principal).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   cambiarRutaFoto(ruta: string) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.principal.ruta_foto = ruta;
+    this.http.put(this.url + 'editar', this.principal).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   agregarRed(newNombre: string, newLink: string) {
@@ -120,11 +147,10 @@ export class EncabezadoComponent implements OnInit {
     }
     this.http.post(this.url + 'redes/cargar', nuevaRed).subscribe(
       (response) => {
-        console.log('POST request successful', response);
-        this.router.navigate(['/login']);
+        console.log('Solicitud POST exitosa', response);
       },
       (error) => {
-        console.log('Error during POST request', error);
+        console.log('Error durante la solicitud POST', error);
       }
     );
   }
@@ -137,11 +163,10 @@ export class EncabezadoComponent implements OnInit {
     }
     this.http.put(this.url + 'redes/editar', this.red).subscribe(
       (response) => {
-        console.log('PUT request successful', response);
-        this.router.navigate(['/login']);
+        console.log('Solicitud PUT exitosa', response);
       },
       (error) => {
-        console.log('Error during PUT request', error);
+        console.log('Error durante la solicitud PUT', error);
       }
     );
   }
@@ -149,11 +174,10 @@ export class EncabezadoComponent implements OnInit {
   eliminarRed(id: number) {
     this.http.delete(this.url + 'redes/eliminar/' + id).subscribe(
       (response) => {
-        console.log('DELETE request successful', response);
-        this.router.navigate(['/login']);
+        console.log('Solicitud DELETE exitosa', response);
       },
       (error) => {
-        console.log('Error during DELETE request', error);
+        console.log('Error durante la solicitud DELETE', error);
       }
     );
   }

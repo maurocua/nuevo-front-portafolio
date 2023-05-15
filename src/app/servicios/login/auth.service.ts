@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
+import { PortafolioServiceService } from '../portafolio-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,12 @@ export class AuthService {
   public password: string | null | undefined;
   public logueado = false; ///////////////////////
 
-  constructor(private http: HttpClient) {}
+  constructor(private portafolioService: PortafolioServiceService,private http: HttpClient) {}
+  url = this.portafolioService.url;
+  //url="http://localhost:8080/";
 
   authenticationService(username: string, password: string) {
-    return this.http.get(`http://localhost:8080/status`,
+    return this.http.get(this.url + `status`,
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;

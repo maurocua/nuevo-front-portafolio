@@ -1,12 +1,12 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div><a href="" class="navbar-brand">Portafolio</a></div>
+        <div><a href="" class="navbar-brand" (click)="manejoLogout()">Portafolio</a></div>
         <ul class="navbar-nav navbar-collapse justify-content-end">
             <li>
-                <a  class="nav-link" href="/login">Login</a>
+                <a  class="nav-link" href="/login" *ngIf="!estaLogueado()">Login</a>
             </li>
             <li>
-                <a class="nav-link" href="/logout" (click)=manejoLogout()>Logout</a>
+                <a class="nav-link" href="/logout" *ngIf="estaLogueado()" (click)=manejoLogout()>Logout</a>
             </li>
         </ul>
     </nav>

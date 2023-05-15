@@ -6,8 +6,8 @@
             <button (click)="mostrarFormIdioma=true" class="btn btn-warning">➕Nueva habilidad</button>
             <form *ngIf="mostrarFormIdioma" class="form-group">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombreH">
-                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivelH">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombreH" name="newNombreH">
+                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivelH" name="newNivelH">
                 </div>
                 <button (click)=agregarHabilidad(newNombreH,newNivelH)
                     class="btn btn-primary">Agregar</button>
@@ -46,8 +46,8 @@
             <button (click)="mostrarFormHab=true" class="btn btn-warning">➕Nuevo idioma</button>
             <form *ngIf="mostrarFormHab" class="form-group">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
-                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre" name="newNombre">
+                    <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel" name="newNivel">
                 </div>
                 <button (click)=agregarIdioma(newNombre,newNivel)
                     class="btn btn-primary">Agregar</button>

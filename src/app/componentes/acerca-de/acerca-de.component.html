@@ -3,18 +3,10 @@
         <h2>Acerca de</h2>
         <p *ngIf="!logueado">{{acerca_de}}</p>
         <form class="form-group" *ngIf="logueado">
-            
                 <div class="form-group">
-                    <input type="text" class="form-control" id="acerca_de" [(ngModel)]="acerca_de" placeholder={{acerca_de}} name="acerca_de">
+                    <input type="text" class="form-control" [(ngModel)]="acerca_de" placeholder={{acerca_de}} name="acerca_de">
                 </div>
-                <button (click)="mostrarCampoPass=true" class="btn btn-success">Editar</button>
-            
-        </form>
-        <form class="form-group" *ngIf="mostrarCampoPass">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarAcercaDe(acerca,password) class="btn btn-danger">Ingresar</button>
+                <button (click)=cambiarAcercaDe(acerca_de) class="btn btn-success">Editar</button>
         </form>
     </article>
 </section>

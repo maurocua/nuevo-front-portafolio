@@ -3,8 +3,8 @@
     <button (click)="mostrarFormPro=true" class="btn btn-warning">➕Nuevo Proyecto</button>
     <form *ngIf="mostrarFormPro" class="form-group">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
-            <input type="text" class="form-control" placeholder="Link" [(ngModel)]="newLink">
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre" name="newNombre">
+            <input type="text" class="form-control" placeholder="Link" [(ngModel)]="newLink" name="newLink">
         </div>
         <button (click)=agregarProyecto(newNombre,newLink)
             class="btn btn-primary">Agregar</button>

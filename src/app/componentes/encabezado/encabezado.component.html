@@ -10,13 +10,6 @@
             </div>
             <button (click)=cambiarRutaFoto(ruta_foto) class="btn btn-success">Editar</button>
         </form>
-        <!-- <form class="form-group" *ngIf="mostrarCampoPassFoto">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password"
-                    placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarRutaFoto(ruta_foto) class="btn btn-danger">Ingresar</button>
-        </form> -->
 </div>
 <section>
     <article>
@@ -30,14 +23,6 @@
             </div>
             <button (click)=cambiarNombre(nombre) class="btn btn-success">Editar</button>
         </form>
-        <!-- <form class="form-group" *ngIf="mostrarCampoPassNombre">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password"
-                    placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarNombre(nombre) class="btn btn-danger">Ingresar</button>
-        </form> -->
-
         <!-- descripción -->
         <h4 *ngIf="!logueado">{{descripcion}}</h4>
         <p *ngIf="logueado">Descripción:</p>
@@ -48,14 +33,6 @@
             </div>
             <button (click)=cambiarDescripcion(descripcion) class="btn btn-success">Editar</button>
         </form>
-        <!-- <form class="form-group" *ngIf="mostrarCampoPassDescripcion">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password"
-                    placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarDescripcion(descripcion) class="btn btn-danger">Ingresar</button>
-        </form> -->
-
         <!-- edad -->
         <p *ngIf="!logueado">{{edad}} años. {{ubicacion}}</p>
         <p *ngIf="logueado">Edad:</p>
@@ -66,13 +43,6 @@
             </div>
             <button (click)=cambiarEdad(edad) class="btn btn-success">Editar</button>
         </form>
-        <!-- <form class="form-group" *ngIf="mostrarCampoPassEdad">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password"
-                    placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarEdad(edad) class="btn btn-danger">Ingresar</button>
-        </form> -->
 
         <!-- ubicacion -->
         <p *ngIf="logueado">Ubicación:</p>
@@ -83,13 +53,6 @@
             </div>
             <button (click)=cambiarUbicacion(ubicacion) class="btn btn-success">Editar</button>
         </form>
-        <!-- <form class="form-group" *ngIf="mostrarCampoPassUbicacion">
-            <div class="form-group">
-                <input type="password" class="form-control" id="password" [(ngModel)]="password"
-                    placeholder="contraseña" name="password">
-            </div>
-            <button (click)=cambiarUbicacion(ubicacion) class="btn btn-danger">Ingresar</button>
-        </form> -->
         <!-- contacto -->
         <div>
         <p>Contacto:</p>

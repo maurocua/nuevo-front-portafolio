@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/servicios/login/auth.service';
@@ -9,6 +10,7 @@ import { PortafolioServiceService } from 'src/app/servicios/portafolio-service.s
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
+  url = this.portafolioService.url;
   lista_habilidades:
     {
       id_habilidad: number;
@@ -30,7 +32,8 @@ export class HabilidadesComponent implements OnInit {
   newNombreH:string="";
   newNivelH:string="";
 
-  constructor(private router: Router,
+  constructor(private http: HttpClient,
+    private router: Router,
     private portafolioService: PortafolioServiceService,
     private authenticationService:AuthService) {
       this.logueado = authenticationService.isUserLoggedIn();
@@ -44,32 +47,86 @@ export class HabilidadesComponent implements OnInit {
   }
 
   agregarHabilidad(newNombre:string,newNivel:string){
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    let nuevaHab = {
+      habilidad:newNombre,
+      nivel_hab:newNivel
+    }
+    this.http.post(this.url + 'habilidades/cargar', nuevaHab).subscribe(
+      (response) => {
+        console.log('Solicitud POST exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud POST', error);
+      }
+    );
   }
 
-  cambiarHabilidad(id:number,nombre_idio: string, nivel: string) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+  cambiarHabilidad(id:number,nombre_hab: string, nivel: string) {
+    let habilidad = {
+      id_habilidad:id,
+      habilidad:nombre_hab,
+      nivel_hab:nivel
+    }
+    this.http.put(this.url + 'habilidades/editar', habilidad).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   eliminarHabilidad(id:number) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.http.delete(this.url + 'habilidades/eliminar/' + id).subscribe(
+      (response) => {
+        console.log('Solicitud DELETE exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud DELETE', error);
+      }
+    );
   }
 
   agregarIdioma(newNombre:string,newNivel:string){
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    let nuevoIdioma = {
+      nivel_idioma:newNombre,
+      idioma:newNivel,
+    }
+    this.http.post(this.url + 'idiomas/cargar', nuevoIdioma).subscribe(
+      (response) => {
+        console.log('Solicitud POST exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud POST', error);
+      }
+    );
   }
 
-  cambiarIdioma(id:number,nombre_hab: string, nivel: string) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+  cambiarIdioma(id:number,nombre_idioma: string, nivel: string) {
+    let idioma = {
+      id_idioma:id,
+      nivel_idioma:nombre_idioma,
+      idioma:nivel,
+    }
+    this.http.put(this.url + 'idiomas/editar', idioma).subscribe(
+      (response) => {
+        console.log('Solicitud PUT exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud PUT', error);
+      }
+    );
   }
 
   eliminarIdioma(id:number) {
-    //llamar a un servicio
-    this.router.navigate(['/login']);
+    this.http.delete(this.url + 'idiomas/eliminar/' + id).subscribe(
+      (response) => {
+        console.log('Solicitud DELETE exitosa', response);
+      },
+      (error) => {
+        console.log('Error durante la solicitud DELETE', error);
+      }
+    );
   }
 }

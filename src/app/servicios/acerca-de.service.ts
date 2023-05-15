@@ -8,6 +8,8 @@ import { AuthService } from './login/auth.service';
 @Injectable({
   providedIn: 'root'
 })
+
+//NO USAR!!!!
 export class AcercaDeService {
 
   datosNuevos: PortafolioModel | undefined;

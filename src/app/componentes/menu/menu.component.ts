@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit{
     }
 
     ngOnInit() {
-      this.logueado = this.authenticationService.isUserLoggedIn();
+      //this.logueado = this.authenticationService.isUserLoggedIn();
       console.log('menu ->' + this.logueado);
     }
     
@@ -25,5 +25,9 @@ export class MenuComponent implements OnInit{
       this.logueado = false;
       this.authenticationService.logout();
       this.router.navigate(['/login']);
+    }
+
+    estaLogueado():boolean{
+      return this.authenticationService.isUserLoggedIn();
     }
 }

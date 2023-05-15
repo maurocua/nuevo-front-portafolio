@@ -3,8 +3,8 @@
     <button (click)="mostrarFormEst=true" class="btn btn-warning">➕Nuevo estudio</button>
     <form *ngIf="mostrarFormEst" class="form-group">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre">
-            <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel">
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="newNombre" name="newNombre">
+            <input type="text" class="form-control" placeholder="Nivel" [(ngModel)]="newNivel" name="newNivel">
         </div>
         <button (click)=agregarEstudio(newNombre,newNivel)
             class="btn btn-primary">Agregar</button>
